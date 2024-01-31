@@ -28,7 +28,7 @@
 //         }
      }
      String intro = request.getParameter("intro").replace("\r\n", "<br/>");
-     //replace("\r\n", "<br/>")   > \r\n를  <br/>로 바꿈      /r/n > 개행문자 줄바꿈
+     //replace("\r\n", "<br/>")   > \r\n를  <br/>로 바꿈      /r/n > 개행문자 줄바꿈.
 
 %>
 <ul>
