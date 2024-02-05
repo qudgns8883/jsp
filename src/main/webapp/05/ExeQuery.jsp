@@ -15,12 +15,12 @@
 
   //쿼리문 생성
   String sql = "SELECT id,pass,name,regidate FROM scott.member_jsp";
-  Statement stmt = jdbc.con.createStatement();
+  Statement stmt = jdbc.con.createStatement(); //기존 레코드를 조회하는 쿼리문
 
-  //쿼리실행
+  //쿼리 실행 결과를 rs에 담음
   ResultSet rs = stmt.executeQuery(sql);
 
-  //결과 확인 (페이지에 출력)
+  //결과 확인 (페이지에 출력) , 결과가 존재할 때동안
   while(rs.next()){
     String id = rs.getString(1);
     String pw = rs.getString(2);

@@ -24,16 +24,9 @@
           JDBCConnect jdbc2 = new JDBCConnect(driver,url,id,pwd);
           jdbc2.close();
      %>
-
      <h3> JDBC 연결 테스트3</h3>
-<%
+<%   //application 내장 객체를 인수로 전달
      JDBCConnect jdbc3 = new JDBCConnect(application);
-     /*
-     * DB관련 로직 작성
-     * 회원가입
-     *
-     * */
-
      jdbc3.close();
 %>
 

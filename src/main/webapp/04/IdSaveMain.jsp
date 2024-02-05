@@ -6,8 +6,8 @@
   --%>
   <%
        String loginId = CookieManager.readCookie(request,"loginId");
-       String cookieCheck = "";
-       if(!loginId.equals("")) {
+       String cookieCheck = " ";
+       if(!loginId.equals(" ")) {
            cookieCheck = "checked";
        }
 
@@ -19,8 +19,8 @@
 <body>
      <h2>로그인 페이지</h2>
      <form action="IdSaveProcess.jsp" method="post">
-          아이디 " <input type="text" name="id"  value="loginId">
-          <input type="checkbox" name="save_check" value="y"<%=cookieCheck%>>
+          아이디 : <input type="text" name="user_id"  value="loginId">
+          <input type="checkbox" name="save_check" value="Y"<%=cookieCheck%>>
           <br/>
           패스워드 : <input type="text" name="user_pw">
           <br/>

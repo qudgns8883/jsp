@@ -15,7 +15,7 @@
           서버 정보, 서버 물리적 경로를 가져오는데 사용함.
 
 
-          wed.xml은 애플리케이션 설정저오를 저장하는 곳
+
      --%>
      <h2>wed.xml 에 설정한 내용 읽어오기</h2>
      초기화 매개변수 : <%= application.getInitParameter("INIT_PARAM")%>

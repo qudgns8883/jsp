@@ -10,7 +10,7 @@ String save_check = request.getParameter("save_check");
 System.out.println(user_id + " " + user_pw );
 
 if("must".equals(user_id) && "1234".equals(user_pw)){
-    if(save_check != null && save_check.equals("y")){
+    if(save_check != null && save_check.equals("Y")){
          CookieManager.makeCookie(response,"loginId",user_id, 86400);
     }else {
         CookieManager.deleteCookie(response,"loginId");

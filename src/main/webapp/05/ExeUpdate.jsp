@@ -14,14 +14,16 @@
       String pass = "1234";
       String name = "테스트1";
 
-      //쿼리문 생성
+      //쿼리문 생성 , ? : 인파라미터며 정확한 값을 나중에 채워준다는 의미
       String sql = "INSERT INTO scott.member_jsp VALUES(?,?,?,sysdate)";
       PreparedStatement psmt = jdbc.con.prepareStatement(sql);
 
+      //psmt 정해진 sql문장을 데이터베이스에 삽입
       psmt.setString(1,id);
       psmt.setString(2,pass);
       psmt.setString(3,name);
 
+      //기존레코드를 변화시키거나 새로운 레코드를 입력하하는 쿼리문
       int intResult = psmt.executeUpdate();
       out.println(intResult + "행이 입력되었습니다.");
 

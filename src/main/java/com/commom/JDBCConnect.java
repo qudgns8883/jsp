@@ -5,15 +5,10 @@ import jakarta.servlet.ServletContext;
 
 import java.sql.*;
 public class JDBCConnect {
-    // 데이터베이스와 연결을 담당
-    public Connection con;
-    // 파라미터가 없는 정적 쿼리문 실행할 때 사용
-    public Statement stmt;
-    // 파라미터가 있는 동적 쿼리문 실행할 때 사용
-    public PreparedStatement psmt;
-    // SELECT 쿼리문 실행결과를 저장할 때 사용
-    public ResultSet rs;
-
+    public Connection con;  // 데이터베이스와 연결을 담당,데이터베이스에 접근할 수 있게 하는 객체
+    public Statement stmt;   // 파라미터가 없는 정적 쿼리문 실행할 때 사용
+    public PreparedStatement psmt;     // 파라미터가 있는 동적 쿼리문 실행할 때 사용
+    public ResultSet rs;    // SELECT 쿼리문 실행결과를 저장할 때 사용
     public JDBCConnect() {
         try {
             // JDBC 드라이버 로드
@@ -23,12 +18,14 @@ public class JDBCConnect {
             String url = "jdbc:oracle:thin:@localhost:1521:xe";
             String id = "system";
             String pwd = "oracle";
+            // con 접속된 정보가 담김
             con = DriverManager.getConnection(url,id,pwd);
 
             System.out.println("DB 연결 성공(기본 생성자)");
 
         }catch (Exception e) {
             e.printStackTrace();
+            //예외가 발생했을 때 예외의 발생경로를 출력
         }
     }
 
@@ -36,12 +33,9 @@ public class JDBCConnect {
         try {
             // JDBC 드라이버 로드
             Class.forName(driver);
-
             // DB 연결
             con = DriverManager.getConnection(url,id,pwd);
-
             System.out.println("DB 연결 성공(파라미터 생성자)");
-
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,13 +49,11 @@ public class JDBCConnect {
             Class.forName(driver);
 
             con = DriverManager.getConnection(url, id, pwd);
-
             System.out.println("DB 연결 성공(파라미터 생성자)");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     // 연결 해제(자원 반납)
     public void close() {
