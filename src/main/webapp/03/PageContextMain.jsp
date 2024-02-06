@@ -1,4 +1,4 @@
-<%@ page import="com.commom.Person" %>
+<%@ page import="com.common.Person" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
      <%

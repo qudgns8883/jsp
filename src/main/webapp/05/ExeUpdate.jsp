@@ -1,4 +1,4 @@
-<%@ page import="com.commom.JDBCConnect" %>
+<%@ page import="com.common.JDBCConnect" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,7 +16,7 @@
 
       //쿼리문 생성 , ? : 인파라미터며 정확한 값을 나중에 채워준다는 의미
       String sql = "INSERT INTO scott.member_jsp VALUES(?,?,?,sysdate)";
-      PreparedStatement psmt = jdbc.con.prepareStatement(sql);
+      PreparedStatement psmt = jdbc.con.prepareStatement(sql);//인파라미터가 있는 동적 쿼리를 처리할때사용
 
       //psmt 정해진 sql문장을 데이터베이스에 삽입
       psmt.setString(1,id);

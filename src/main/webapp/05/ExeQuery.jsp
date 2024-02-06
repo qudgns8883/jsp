@@ -1,4 +1,4 @@
-<%@ page import="com.commom.JDBCConnect" %>
+<%@ page import="com.common.JDBCConnect" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>

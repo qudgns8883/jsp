@@ -1,4 +1,4 @@
-package com.commom;
+package com.common;
 
 
 import jakarta.servlet.ServletContext;

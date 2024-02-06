@@ -1,5 +1,5 @@
-<%@ page import="com.commom.JDBCConnect" %>
-<%@ page import="com.commom.DBConnPool" %>
+<%@ page import="com.common.JDBCConnect" %>
+<%@ page import="com.common.DBConnPool" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,6 +28,7 @@
 <%   //application 내장 객체를 인수로 전달
      JDBCConnect jdbc3 = new JDBCConnect(application);
      jdbc3.close();
+     //session.setMaxInactiveInterval(1200); 세션 유지시간 설정방법 잘안쓰임
 %>
 
 <h2> 커넥션 풀 테스트</h2>
