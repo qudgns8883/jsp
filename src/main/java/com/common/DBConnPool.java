@@ -10,10 +10,10 @@ import java.sql.Statement;
 
 public class DBConnPool {
 
-    public Connection con;
-    public Statement stmt;
-    public PreparedStatement psmt;
-    public ResultSet rs;
+    public Connection con; // 데이터베이스와 연결을 담당,데이터베이스에 접근할 수 있게 하는 객체
+    public Statement stmt;// 파라미터가 없는 정적 쿼리문 실행할 때 사용
+    public PreparedStatement psmt; // 파라미터가 있는 동적 쿼리문 실행할 때 사용
+    public ResultSet rs; // SELECT 쿼리문 실행결과를 저장할 때 사용
 
 
     public DBConnPool() {

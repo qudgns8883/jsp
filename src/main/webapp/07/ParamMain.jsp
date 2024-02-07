@@ -16,6 +16,5 @@
           <jsp:param name="param2" value="경기도"/>
           <jsp:param name="param3" value="<%=pVal%>"/>
      </jsp:forward>
-
 </body>
 </html>

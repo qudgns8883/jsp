@@ -38,7 +38,7 @@
      <%
           }else{
      %>
-          <%=session.getAttribute("UserName")%> 님 , 로그인 하셨습니다. <br/>
+          <%=session.getAttribute("UserName")%> 님 , 로그인하셨습니다. <br/>
           <a href="Logout.jsp">[로그아웃]</a>
      <%
           }

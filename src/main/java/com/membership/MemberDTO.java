@@ -3,6 +3,9 @@ package com.membership;
 public class MemberDTO {
     private String id;
 
+    public MemberDTO() {
+    }
+
     private String pass;
     private String name;
     private String regidate;

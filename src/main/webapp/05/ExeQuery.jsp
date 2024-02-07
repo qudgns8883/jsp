@@ -14,7 +14,7 @@
   JDBCConnect jdbc = new JDBCConnect();
 
   //쿼리문 생성
-  String sql = "SELECT id,pass,name,regidate FROM scott.member_jsp";
+  String sql = "SELECT id,pass,name,regidate FROM member_jsp";
   Statement stmt = jdbc.con.createStatement(); //기존 레코드를 조회하는 쿼리문
 
   //쿼리 실행 결과를 rs에 담음
