@@ -23,7 +23,14 @@
 		<param-name>OracleId</param-name>
 		<param-value>scott</param-value>
 	</context-param>
-
+	<context-param>
+		<param-name>POSTS_PET_PAGE</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>POSTS_PET_BLOCK</param-name>
+		<param-value>5</param-value>
+	</context-param>
 	<context-param>
 		<param-name>OraclePwd</param-name>
 		<param-value>TIGER</param-value>
