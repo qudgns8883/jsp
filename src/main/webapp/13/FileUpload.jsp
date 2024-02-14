@@ -12,7 +12,11 @@
             alert("제목을 입력하세요");
             form.title.focus();
             return false;
+<<<<<<< HEAD
         }else if(form.attachedFile.value == ""){
+=======
+        }else if(form.ofile.value == ""){
+>>>>>>> a4f2275 (14장 모델2 게시판)
             alert("첨부파일은 필수 입력입니다.");
             return false;
         }
@@ -30,7 +34,11 @@
      <input type="checkbox" name="cate" value="과제"/>과제
      <input type="checkbox" name="cate" value="워드"/>워드
      <input type="checkbox" name="cate" value="음원"/>음원 <br/>
+<<<<<<< HEAD
      첨부파일 : <input type="file" name="attachedFile"/> <br/>
+=======
+     첨부파일 : <input type="file" name="ofile"/> <br/>
+>>>>>>> a4f2275 (14장 모델2 게시판)
      <input type="submit" value="전송하기"/>
 </form>
 

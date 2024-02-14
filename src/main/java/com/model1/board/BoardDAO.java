@@ -79,7 +79,7 @@ public class BoardDAO extends DBConnPool {
         return bbs;
     }
     //페이징 관리 리스트
-    public List<BoardDTO> selectListPage(Map<String, Object> map) {
+    public List<BoardDTO> selectListPage (Map<String, Object> map) {
         //쿼리 결과를 담을 변수
         List<BoardDTO> bbs = new ArrayList<BoardDTO>();
         //쿼리문 작성

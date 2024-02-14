@@ -31,7 +31,7 @@ public class BoardPage {
 
 
         //다음 페이지 블록 바로가기
-        if(pageTemp != totalPage){
+        if(pageTemp <= totalPage){
             pagingStr += "<a href='" + reqUrl + "?pageNum=" +  pageTemp + "'>[다음 블록]</a>";
             pagingStr += "&nbsp";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + totalPage + "'>[마지막 페이지]</a>";
