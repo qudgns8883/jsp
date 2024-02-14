@@ -24,7 +24,7 @@
          if(confirmed){
              var form = document.writeFrm;
              form.method = "post";
-             form.action = "deletePost.jsp";
+             form.action = "deleteProcess.jsp";
              form.submit();
          }
 
@@ -53,26 +53,22 @@
           </tr>
           <tr>
                <td>내용</td>
-               <td colspan="3"><%=dto.getContent().replace("\r\n" , "<br/>")%></td>
+               <td colspan="3"><%=dto.getContent().replace("\r\n", "</br>")%></td>
           </tr>
           <tr>
-          <%
-               if(session.getAttribute("UserId") != null &&
-               session.getAttribute("UserId").toString().equals(dto.getId())){
-
-          %>
-
-          <%
-               }
-          %>
                <td colspan="4" align="center">
+                    <%
+                         if(session.getAttribute("UserId") != null &&
+                                 session.getAttribute("UserId").toString().equals(dto.getId())){
+                    %>
+                    <button type="button" onclick="location.href='Edit.jsp?num=<%=dto.getNum()%>';">수정</button>
+                    <button type="button" onclick="deletePost();">삭제</button>
+                    <%
+                         }
+                    %>
                     <button type="button" onclick="location.href='List.jsp';">목록</button>
-                    <button type="button" onclick=" location.href='Edit.jsp?num=<%=dto.getNum()%>';">수정</button>
-                    <button type="button" onclick=" location.href='DeleteProcess.jsp?num=<%=dto.getNum()%>';">삭제</button>
                </td>
           </tr>
      </table>
 
 </form>
-</body>
-</html>
