@@ -1,12 +1,13 @@
 package com.model2;
 
 import com.common.DBConnPool;
-import com.model1.board.BoardDTO;
+
 
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
+
 
 public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
     public MVCBoardDAO() {
@@ -30,7 +31,7 @@ public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
             totalCount = rs.getInt(1);
 
         }catch (Exception e){
-            e.printStackTrace();;
+            e.printStackTrace();
             System.out.println("mvcboard selectCount 오류발생");
         }
 
@@ -152,6 +153,20 @@ public void updateVisitCount(String idx){
     }
 }
 
+public void updateDownCount(String idx){
+        String query = "UPDATE scott.mvcboard SET "
+                +" downcount= downcount+1"
+                +" WHERE idx =? ";
+
+        try{
+            psmt = con.prepareStatement(query);
+            psmt.setString(1, idx);
+            psmt.executeUpdate();
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("updateDownCount 오류발생");
+        }
+}
 }
 
 
