@@ -15,22 +15,22 @@ public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
     }
 
     //검색 조건에 맞는 게시물 개수 반환
-    public int selectCount(Map <String, Object> map){
+    public int selectCount(Map<String, Object> map) {
         int totalCount = 0;
 
         String query = "SELECT COUNT(*) FROM scott.mvcboard";
-        if(map.get("searchWord") != null){
+        if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField") + " " + " LIKE '%" + map.get("searchWord") + "%'";
         }
         //SLECT COUNT(*) FROM board_jsp WHERE title LIKE '%검색어%';
 
-        try{
+        try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
             rs.next();
             totalCount = rs.getInt(1);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("mvcboard selectCount 오류발생");
         }
@@ -80,6 +80,7 @@ public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
         }
         return bbs;
     }
+
     public int insertWrite(MVCBoardDTO dto) {
         int result = 0;
         //DB에 BOARD테이블에 맞춰서 작성
@@ -108,17 +109,17 @@ public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
     }
 
     //파라메터 idx값에 따라 게시물 가져오기
-    public MVCBoardDTO selectView(String idx){
+    public MVCBoardDTO selectView(String idx) {
         MVCBoardDTO dto = new MVCBoardDTO();
 
         String query = "SELECT * FROM scott.mvcboard WHERE idx = ?";
 
-        try{
+        try {
             psmt = con.prepareStatement(query);
-            psmt.setString(1,idx);
+            psmt.setString(1, idx);
             rs = psmt.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 dto.setIdx(rs.getString("idx"));
                 dto.setName(rs.getString("name"));
                 dto.setTitle(rs.getString("title"));
@@ -129,13 +130,70 @@ public class MVCBoardDAO extends DBConnPool { // 커넥션 풀 상속
                 dto.setDowncount(rs.getInt("downcount"));
                 dto.setPass(rs.getString("pass"));
                 dto.setVisitcount(rs.getInt("visitcount"));
-                System.out.println("ofile :: " +rs.getString("ofile") + "  sfile : " + rs.getString("sfile"));
+
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("selectView 오류발생");
         }
         return dto;
     }
+
+    //입력한 비밀번호가 지정한 idx게시물의 비밀번호와 일치하는 지 여부확인
+    public boolean confirmPassword(String pass, String idx) {
+
+        boolean isCorr = true;
+        String query = "SELECT COUNT(*) FROM scott.mvcboard"
+                + " WHERE pass = ? AND idx = ? ";
+
+
+        try {
+            psmt = con.prepareStatement(query);
+            psmt.setString(1, pass);
+            psmt.setString(2, idx);
+            rs = psmt.executeQuery();
+
+            rs.next();
+            if (rs.getInt(1) == 0) {
+                isCorr = false;
+            }
+
+
+        } catch (Exception e) {
+            isCorr = false;
+            System.out.println("confirmPassword 오류발생");
+            e.printStackTrace();
+
+        }
+        return isCorr;
+    }
+
+    //게시글 수정
+    public int updatePost(MVCBoardDTO dto) {
+        int result = 0;
+
+        String query = "UPDATE scott.mvcboard"
+                + " SET title =?, name=?, content=?, ofile=?, sfile=?"
+                + " WHERE idx=? AND pass=?";
+        try {
+            psmt = con.prepareStatement(query);
+            psmt.setString(1, dto.getTitle());
+            psmt.setString(2, dto.getName());
+            psmt.setString(3, dto.getContent());
+            psmt.setString(4, dto.getOfile());
+            psmt.setString(5, dto.getSfile());
+            psmt.setString(6, dto.getIdx());
+            psmt.setString(7, dto.getPass());
+
+            result = psmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("updatePost 오류발생");
+        }
+        return result;
+    }
+
 public void updateVisitCount(String idx){
     String query = "UPDATE scott.mvcboard"
             + " SET visitcount  = visitcount + 1"
@@ -167,6 +225,23 @@ public void updateDownCount(String idx){
             System.out.println("updateDownCount 오류발생");
         }
 }
+
+//게시글 삭제
+    public int deletePost(String idx){
+        int result = 0;
+
+        String query = "DELETE FROM scott.mvcboard WHERE idx = ?";
+        try{
+        psmt = con.prepareStatement(query);
+        psmt.setString(1, idx);
+        result = psmt.executeUpdate();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("deletePost 오류발생");
+        }
+        return result;
+    }
 }
 
 

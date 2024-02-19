@@ -22,7 +22,7 @@ public class ViewController extends HttpServlet {
 
         dao.updateVisitCount(idx);  //조회수 1++
         MVCBoardDTO dto = dao.selectView(idx);
-        System.out.println("dto :: 확인" + dto.toString() + "");
+
         dao.close();
         //줄바꿈 처리
         dto.setContent(dto.getContent().replaceAll("\r\n","<br/>" ));

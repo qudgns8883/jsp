@@ -12,11 +12,11 @@
             alert("제목을 입력하세요");
             form.title.focus();
             return false;
-<<<<<<< HEAD
+
         }else if(form.attachedFile.value == ""){
-=======
+
         }else if(form.ofile.value == ""){
->>>>>>> a4f2275 (14장 모델2 게시판)
+
             alert("첨부파일은 필수 입력입니다.");
             return false;
         }
